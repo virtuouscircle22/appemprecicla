@@ -1,0 +1,61 @@
+<br><br>
+<div class="row">
+    <!-- FORM -->
+    <div class="col-md-4">
+      <div class="admm">
+        <div class="card">
+            <div class="card-body p-4">
+                <!-- FORM -->
+                    <form #userForm="ngForm">
+                        <!-- THE Id's Empresa -->
+                        <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="userService.selectedUser._id">
+                        <div class="form-group">
+                        <input type="text" name="email" #name="ngModel" [(ngModel)]="userService.selectedUser.email"
+                            placeholder="Introduzca el email" class="form-control">
+                        </div>
+            
+                        <div class="form-group">
+                            <div class="input-field col-s12">
+                                <input type="text" name="password" #name="ngModel" [(ngModel)]="userService.selectedUser.password"
+                            placeholder="Introduzca la contraseña" class="form-control">
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary mr-2" (click)="resetForm(userForm)">Clean</button>
+                        <button class="btn btn-secondary" (click)="addUser(userForm)">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+  <!--  -->
+  <!-- TABLE -->
+  <div class="col-md-8">
+        <div class="adm">
+            <table class="table table-striped">
+            <thead>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of userService.users">
+                <td>{{ user.email }}</td>
+                <td> {{ user.password }}</td>
+                <td>
+                    <a (click)="editUser(user)" class="btn btn-secondary btn-sm">
+                    <i class="material-icons">edit</i>
+                    </a>
+                    </td>
+                    <td>
+                    <a (click)="deleteUser(user._id, userForm)" class="btn btn-danger btn-sm">
+                    <i class="material-icons">delete</i>
+                    </a>
+                </td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+    </div>
+</div>

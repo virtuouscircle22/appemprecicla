@@ -1,0 +1,134 @@
+
+<div class="row">
+  
+    <!-- FORM -->
+    <div class="col-md-4">
+      <br><br>
+      <div class="admm">
+      <div class="card">
+        <div class="card-body p-4">
+         
+          <!-- FORM -->
+          <form #empresaForm="ngForm">
+            <!-- THE Id's Empresa -->
+            <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="empresaService.selectedEmpresa._id">
+  
+            <div class="form-group">
+              <input type="text" name="name" #name="ngModel" [(ngModel)]="empresaService.selectedEmpresa.name"
+                placeholder="Introduzca el nombre" class="form-control">
+            </div>
+  
+            <div class="form-group">
+              <div class="input-field col-s12">
+                <input type="text" name="descripcion" #name="ngModel" [(ngModel)]="empresaService.selectedEmpresa.descripcion"
+                  placeholder="Introduzca la descripcion" class="form-control">
+              </div>
+            </div>
+  
+            <div class="form-group">
+              <input type="text" name="direccion" #name="ngModel" [(ngModel)]="empresaService.selectedEmpresa.direccion"
+                placeholder="Introduzca la direccion" class="form-control">
+            </div>
+  
+            <div class="form-group">
+              <div class="input-field col-s12">
+                <input type="text" name="localidad" #name="ngModel" [(ngModel)]="empresaService.selectedEmpresa.localidad"
+                  placeholder="Introduzca la localidad" class="form-control">
+              </div>
+            </div>
+  
+            <div class="form-group">
+              <div class="input-field col-s12">
+                <input type="text" name="pais" #name="ngModel" [(ngModel)]="empresaService.selectedEmpresa.pais"
+                  placeholder="Introduzca el pais" class="form-control">
+              </div>
+            </div>
+  
+            <div class="form-group">
+              <input type="text" name="longitude" #name="ngModel" [(ngModel)]="empresaService.selectedEmpresa.longitude"
+                placeholder="Introduzca la longitud" class="form-control">
+            </div>
+  
+            <div class="form-group">
+              <input type="text" name="latitude" #name="ngModel" [(ngModel)]="empresaService.selectedEmpresa.latitude"
+                defaultValue = "www" placeholder="Introduzca la latitud" class="form-control">
+            </div>
+  
+  
+            <button class="btn btn-primary mr-2" (click)="resetForm(empresaForm)">Clean</button>
+            <button class="btn btn-secondary" (click)="addEmpresa(empresaForm)">Save</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  </div>
+  <!--  -->
+  
+  <!-- TABLE -->
+  
+  <div class="col-md-8">
+    <br><br>
+    <div class="form-group">
+      <p> Nombre: 
+        <input
+        type="text"
+        class="forms-control"
+        placeholder="Buscar..."
+        [(ngModel)]="filterpostName"
+        name="filterpostName"
+        />
+      </p>
+    </div>
+    
+    <div class="adm">
+    <table class="table table-striped">
+      
+      <thead>
+        <th>Nombre</th>
+        <th>Descripcion</th>
+        <th>Direccion</th>
+        <th>Localidad</th>
+        <th>Pais</th>
+        <th>Longitud</th>
+        <th>Latitud</th>
+        <th>Editar</th>
+        <th>Mapa</th>
+        <th>Eliminar</th>
+      </thead>
+    
+    
+      <tbody>
+        <tr *ngFor="let empresa of empresaService.empresas | filterName: filterpostName">
+          <td>{{ empresa.name }}</td>
+          <td>{{ empresa.descripcion }}</td>
+          <td>{{ empresa.direccion }}</td>
+          <td>{{ empresa.localidad }}</td>
+          <td>{{ empresa.pais }}</td>
+          <td>{{ empresa.longitude }}</td>
+          <td>{{ empresa.latitude }}</td>
+          <td>
+            <a (click)="editEmpresa(empresa)" class="btn btn-secondary btn-sm">
+              <i class="material-icons">edit</i>
+            </a>
+            </td>
+            <td>
+            <a (click)="irMapa(empresa)" class="btn btn-secondary btn-sm">
+              <i class="material-icons">map</i>
+            </a>
+          </td>
+            <td>
+            <a (click)="deleteEmpresa(empresa._id, empresaForm)" class="btn btn-danger btn-sm">
+              <i class="material-icons">delete</i>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    
+    
+    </table>
+  </div>
+  
+  </div>
+  </div>
+  
+  

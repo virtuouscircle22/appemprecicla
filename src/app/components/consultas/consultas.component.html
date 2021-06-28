@@ -1,0 +1,78 @@
+<div class="col-md-8">
+    <br><br>
+    <form (ngSubmit)="onSubmit()">
+      <label for="pais"
+        >Pais:  
+        <select
+          type="text"
+          id="pais"
+          required
+          [(ngModel)]="select"
+          name="pais"
+          (ngModelChange)="onSubmit()"
+          #contam="ngModel"
+        >
+          <option *ngFor="let pais of paiss" [value]="pais"
+            >{{pais}}
+          </option>
+        </select>
+        &nbsp;
+      </label>
+      <img src="..\..\..\assets\flecha.png" width="80px">&nbsp;
+      <a (click)="irMapaGrupo()" class="btn btn-secondary btn-sm">
+        <i class="material-icons">map</i>
+      </a><br>
+    </form>
+    <br>
+    <div class="container">
+      <div class="form-group">
+        <p> Descripcion: 
+          <input
+          type="text"
+          class="forms-control"
+          placeholder="Buscar..."
+          [(ngModel)]="filterpostDes"
+          name="filterpostDes"
+          />
+        </p>
+        <p> Localidad: 
+          <input
+          type="text"
+          class="forms-control"
+          placeholder="Buscar..."
+          [(ngModel)]="filterpostLoc"
+          name="filterpostLoc"
+          />
+        </p>
+      </div>
+      <table class="table table-striped">
+        <thead>
+          <th>Nombre</th>
+          <th>Descripcion</th>
+          <th>Direccion</th>
+          <th>Localidad</th>
+          <th>Pais</th>
+          <th>Longitud</th>
+          <th>Latitud</th>
+          <th>Mapa</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let empresa of empresaService.empresas 
+                        | filterDescripcion: filterpostDes | filterLocalidad: filterpostLoc">
+            <td>{{ empresa.name }}</td>
+            <td>{{ empresa.descripcion }}</td>
+            <td>{{ empresa.direccion }}</td>
+            <td>{{ empresa.localidad }}</td>
+            <td>{{ empresa.pais }}</td>
+            <td>{{ empresa.longitude }}</td>
+            <td>{{ empresa.latitude }}</td>
+              <td>
+              <a (click)="irMapa(empresa)" class="btn btn-secondary btn-sm">
+                <i class="material-icons">map</i>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  

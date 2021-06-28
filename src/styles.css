@@ -1,0 +1,46 @@
+
+
+html, body { height: 100%; background-color: #ffffff; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } 
+
+* {
+    font-family: 'Courier New', Courier, monospace;
+  }
+  table {
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+  }
+ 
+  th.pos {
+    text-align: right;
+  }
+  
+  table,
+  th,
+  td {
+    border: 3px solid #0645FD;
+    border-collapse: collapse;
+  }
+  
+  th {
+    background-color: #A9BEFC;
+    color: #255BFF;
+  }
+  
+  td {
+    background-color: #D4DFFF;
+  }
+  
+  button {
+    background-color: rgb(247, 181, 241);
+    font-size: 15px;
+    border-radius: 80px;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    border-color: rgb(97, 1, 81);
+    border-width: 3px;
+    border-collapse: separate;
+  } 
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
